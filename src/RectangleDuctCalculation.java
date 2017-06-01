@@ -165,6 +165,8 @@ public class RectangleDuctCalculation extends JPanel {
                         }
                     }
                 }
+
+
             }
         });
 
