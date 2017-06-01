@@ -12,57 +12,81 @@ public class RectangleDuctCalculation extends JPanel {
 
         setLayout(null);
 
-        JTextField flowRate = new JTextField();
-        flowRate.setBounds(25, 30, 150, 20);
-        add(flowRate);
-
         JLabel flowRateLabel = new JLabel("Расход");
-        flowRateLabel.setBounds(225, 30, 150, 20);
+        flowRateLabel.setBounds(25, 30, 150, 20);
         add(flowRateLabel);
 
-        JTextField width = new JTextField();
-        width.setBounds(25, 90, 150, 20);
-        add(width);
+        JTextField flowRate = new JTextField();
+        flowRate.setBounds(115, 30, 150, 20);
+        add(flowRate);
+
+        JLabel flowRateDimension = new JLabel("куб.м/ч");
+        flowRateDimension.setBounds(310, 30, 150, 20);
+        add(flowRateDimension);
 
         JLabel widthLabel = new JLabel("Ширина");
-        widthLabel.setBounds(225, 90, 150, 20);
+        widthLabel.setBounds(25, 80, 150, 20);
         add(widthLabel);
 
-        JTextField height = new JTextField();
-        height.setBounds(25, 130, 150, 20);
-        add(height);
+        JTextField width = new JTextField();
+        width.setBounds(115, 80, 150, 20);
+        add(width);
+
+        JLabel widthDimension = new JLabel("м");
+        widthDimension.setBounds(310, 80, 150, 20);
+        add(widthDimension);
 
         JLabel heightLabel = new JLabel("Высота");
-        heightLabel.setBounds(225, 130, 150, 20);
+        heightLabel.setBounds(25, 130, 150, 20);
         add(heightLabel);
+
+        JTextField height = new JTextField();
+        height.setBounds(115, 130, 150, 20);
+        add(height);
+
+        JLabel heightDimension = new JLabel("м");
+        heightDimension.setBounds(310, 130, 150, 20);
+        add(heightDimension);
 
         JButton calculate = new JButton("Расчитать");
         calculate.setBounds(55, 175, 270, 50);
         add(calculate);
 
-        JTextField diameter = new JTextField();
-        diameter.setBounds(25, 257, 150, 20);
-        add(diameter);
-
         JLabel diameterLabel = new JLabel("Экв. диаметр");
-        diameterLabel.setBounds(225, 257, 150, 20);
+        diameterLabel.setBounds(25, 255, 150, 20);
         add(diameterLabel);
 
-        JTextField speed = new JTextField();
-        speed.setBounds(25, 310, 150, 20);
-        add(speed);
+        JTextField diameter = new JTextField();
+        diameter.setBounds(115, 255, 150, 20);
+        add(diameter);
+
+        JLabel diameterDimension = new JLabel("м");
+        diameterDimension.setBounds(310, 255, 150, 20);
+        add(diameterDimension);
 
         JLabel speedLabel = new JLabel("Скорость");
-        speedLabel.setBounds(225, 310, 150, 20);
+        speedLabel.setBounds(25, 303, 150, 20);
         add(speedLabel);
 
+        JTextField speed = new JTextField();
+        speed.setBounds(115, 303, 150, 20);
+        add(speed);
+
+        JLabel speedDimension = new JLabel("м/с");
+        speedDimension.setBounds(310, 303, 150, 20);
+        add(speedDimension);
+
+        JLabel pressureLabel = new JLabel("Потеря давл.");
+        pressureLabel.setBounds(25, 351, 150, 20);
+        add(pressureLabel);
+
         JTextField pressure = new JTextField();
-        pressure.setBounds(25, 364, 150, 20);
+        pressure.setBounds(115, 351, 150, 20);
         add(pressure);
 
-        JLabel pressureLabel = new JLabel("Потеря давления");
-        pressureLabel.setBounds(225, 364, 150, 20);
-        add(pressureLabel);
+        JLabel pressureDimension = new JLabel("Па");
+        pressureDimension.setBounds(310, 351, 150, 20);
+        add(pressureDimension);
 
         JButton reset = new JButton("Сброс");
         reset.setBounds(55, 425, 270, 50);
