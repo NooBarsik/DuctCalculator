@@ -4,8 +4,8 @@
  */
 
 import javax.swing.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import java.awt.*;
+import java.awt.event.*;
 
 public class RectangleDuctCalculation extends JPanel {
     public RectangleDuctCalculation() {
@@ -20,6 +20,12 @@ public class RectangleDuctCalculation extends JPanel {
         flowRate.setBounds(115, 30, 150, 20);
         add(flowRate);
 
+        JLabel flowRateErrorLabel = new JLabel("Неверный ввод. Введите положительное число.");
+        flowRateErrorLabel.setBounds(45, 55, 400, 20);
+        flowRateErrorLabel.setForeground(Color.red);
+        add(flowRateErrorLabel);
+        flowRateErrorLabel.setVisible(false);
+
         JLabel flowRateDimension = new JLabel("куб.м/ч");
         flowRateDimension.setBounds(310, 30, 150, 20);
         add(flowRateDimension);
@@ -32,6 +38,12 @@ public class RectangleDuctCalculation extends JPanel {
         width.setBounds(115, 80, 150, 20);
         add(width);
 
+        JLabel widthErrorLabel = new JLabel("Неверный ввод. Введите положительное число.");
+        widthErrorLabel.setBounds(45, 105, 400, 20);
+        widthErrorLabel.setForeground(Color.red);
+        add(widthErrorLabel);
+        widthErrorLabel.setVisible(false);
+
         JLabel widthDimension = new JLabel("м");
         widthDimension.setBounds(310, 80, 150, 20);
         add(widthDimension);
@@ -43,6 +55,12 @@ public class RectangleDuctCalculation extends JPanel {
         JTextField height = new JTextField();
         height.setBounds(115, 130, 150, 20);
         add(height);
+
+        JLabel heightErrorLabel = new JLabel("Неверный ввод. Введите положительное число.");
+        heightErrorLabel.setBounds(45, 155, 400, 20);
+        heightErrorLabel.setForeground(Color.red);
+        add(heightErrorLabel);
+        heightErrorLabel.setVisible(false);
 
         JLabel heightDimension = new JLabel("м");
         heightDimension.setBounds(310, 130, 150, 20);
@@ -96,15 +114,65 @@ public class RectangleDuctCalculation extends JPanel {
 
         calculate.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                double d = CalculateDiameter(Double.parseDouble(width.getText()), Double.parseDouble(height.getText()));
-                double s = CalculateSpeed(Double.parseDouble(flowRate.getText()), d);
-                diameter.setText(Double.toString(d));
-                speed.setText(Double.toString(s));
-                pressure.setText(Double.toString(CalculatePressure(s, d)));
+                diameter.setText("");
+                speed.setText("");
+                pressure.setText("");
+
+                flowRateErrorLabel.setVisible(false);
+                widthErrorLabel.setVisible(false);
+                heightErrorLabel.setVisible(false);
+
+                String sF = flowRate.getText();
+                String sW = width.getText();
+                String sH = height.getText();
+
+                double f = 0;
+                double w = 0;
+                double h = 0;
+
+                try {
+                    f = Double.parseDouble(sF);
+                }
+                catch (Exception ex) {
+                    flowRateErrorLabel.setVisible(true);
+                }
+
+                try {
+                    w = Double.parseDouble(sW);
+                }
+                catch (Exception ex) {
+                    widthErrorLabel.setVisible(true);
+                }
+
+                try {
+                    h = Double.parseDouble(sH);
+                }
+                catch (Exception ex) {
+                    heightErrorLabel.setVisible(true);
+                }
+
+                if (f <= 0) flowRateErrorLabel.setVisible(true);
+                else {
+                    if (w <= 0) widthErrorLabel.setVisible(true);
+                    else {
+                        if (h <= 0) heightErrorLabel.setVisible(true);
+                        else {
+                            double d = CalculateDiameter(w, h);
+                            double s = CalculateSpeed(f, d);
+                            diameter.setText(Double.toString(d));
+                            speed.setText(Double.toString(s));
+                            pressure.setText(Double.toString(CalculatePressure(s, d)));
+                        }
+                    }
+                }
             }
         });
+
         reset.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
+                flowRateErrorLabel.setVisible(false);
+                widthErrorLabel.setVisible(false);
+                heightErrorLabel.setVisible(false);
                 flowRate.setText("");
                 width.setText("");
                 height.setText("");

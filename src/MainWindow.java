@@ -67,8 +67,5 @@ public class MainWindow extends JFrame {
         add(rectangleDuctCalculation, BorderLayout.CENTER);
         rectangleDuctCalculation.setVisible(false);
         add(circleDuctCalculation, BorderLayout.CENTER);
-
-
     }
-
 }
