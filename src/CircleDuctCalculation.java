@@ -1,11 +1,12 @@
 /**
  * @author Чашников Михаил
- * @version dated 31 may 2017
+ * @version dated 01 june 2017
  */
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
+import java.math.*;
 
 public class CircleDuctCalculation extends JPanel {
     public CircleDuctCalculation() {
@@ -109,9 +110,12 @@ public class CircleDuctCalculation extends JPanel {
                     if (d <= 0) diameterErrorLabel.setVisible(true);
                     else{
                         double s = CalculateSpeed(f, d);
-                        speed.setText(Double.toString(s));
-                        pressure.setText(Double.toString(CalculatePressure(s,
-                                Double.parseDouble(diameter.getText()))));
+
+                        BigDecimal bS = new BigDecimal(s, MathContext.DECIMAL32);
+                        BigDecimal bP = new BigDecimal(CalculatePressure(s,d), MathContext.DECIMAL32);
+
+                        speed.setText(bS.toString());
+                        pressure.setText(bP.toString());
                     }
                 }
             }

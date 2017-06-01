@@ -1,11 +1,12 @@
 /**
  * @author Чашников Михаил
- * @version dated 31 may 2017
+ * @version dated 01 june 2017
  */
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
+import java.math.*;
 
 public class RectangleDuctCalculation extends JPanel {
     public RectangleDuctCalculation() {
@@ -159,14 +160,17 @@ public class RectangleDuctCalculation extends JPanel {
                         else {
                             double d = CalculateDiameter(w, h);
                             double s = CalculateSpeed(f, d);
-                            diameter.setText(Double.toString(d));
-                            speed.setText(Double.toString(s));
-                            pressure.setText(Double.toString(CalculatePressure(s, d)));
+
+                            BigDecimal bD = new BigDecimal(d, MathContext.DECIMAL32);
+                            BigDecimal bS = new BigDecimal(s, MathContext.DECIMAL32);
+                            BigDecimal bP = new BigDecimal(CalculatePressure(s, d), MathContext.DECIMAL32);
+
+                            diameter.setText(bD.toString());
+                            speed.setText(bS.toString());
+                            pressure.setText(bP.toString());
                         }
                     }
                 }
-
-
             }
         });
 
