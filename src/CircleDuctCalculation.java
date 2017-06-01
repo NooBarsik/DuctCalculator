@@ -1,10 +1,12 @@
+/**
+ * @author Чашников Михаил
+ * @version dated 31 may 2017
+ */
+
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-/**
- * Created by Михаил on 31.05.2017.
- */
 public class CircleDuctCalculation extends JPanel {
     public CircleDuctCalculation() {
 
